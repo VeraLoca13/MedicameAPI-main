@@ -1,9 +1,9 @@
 
 class Doctor():
   
-  def __init__(self, id, medicalSpeciality = None, name = None, ocupation = None, age = None, shift = None) -> None:
+  def __init__(self, id, medical_speciality = None, name = None, ocupation = None, age = None, shift = None) -> None:
     self.id = id
-    self.medicalSpeciality = medicalSpeciality
+    self.medical_speciality = medical_speciality
     self.name = name
     self.ocupation = ocupation
     self.age = age
@@ -12,7 +12,7 @@ class Doctor():
   def to_JSON(self):
     return {
       'id': self.id,
-      'medicalSpeciality': self.medicalSpeciality,
+      'medical_speciality': self.medical_speciality,
       'name': self.name,
       'ocupation': self.ocupation,
       'age': self.age,

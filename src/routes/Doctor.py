@@ -8,7 +8,7 @@ from models.DoctorModel import DoctorModel
 # Utils
 from utils.DateFormat import DateFormat
 
-main = Blueprint('doctor_blueprint', __doctor__)
+main = Blueprint('doctor_blueprint', __name__)
 
 
 @main.route('/')

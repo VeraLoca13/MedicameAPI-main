@@ -8,7 +8,7 @@ from models.VisitaMedicaModel import VisitaMedicaModel
 # Utils
 from utils.DateFormat import DateFormat
 
-main = Blueprint('movie_blueprint', __name__)
+main = Blueprint('visita_blueprint', __name__)
 
 
 @main.route('/')

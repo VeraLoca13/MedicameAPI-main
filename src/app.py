@@ -6,6 +6,7 @@ from config import config
 
 # Routes
 from routes import VisitaMedica
+from routes import Pirula
 
 app = Flask(__name__)
 
@@ -21,6 +22,7 @@ if __name__ == '__main__':
 
     # Blueprints
     app.register_blueprint(VisitaMedica.main, url_prefix='/api/visita')
+    app.register_blueprint(Pirula.main, url_prefix='/api/visita')
 
     # Error handlers
     app.register_error_handler(404, page_not_found)

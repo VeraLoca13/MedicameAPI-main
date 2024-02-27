@@ -8,7 +8,7 @@ from models.DoctorModel import DoctorModel
 # Utils
 from utils.DateFormat import DateFormat
 
-main = Blueprint('doctor_blueprint', __doctor__)
+main = Blueprint('doctor_blueprint', __name__)
 
 
 @main.route('/')
@@ -35,14 +35,14 @@ def get_doctor(id):
 @main.route('/add', methods=['POST'])
 def add_doctor():
     try:
-        medical_speciality = request.json['medical_speciality']
-        doctor = request.json['doctor']
+        medical_speciality = request.json['medicalSpeciality']
+        name = request.json['name']
         ocupation = request.json['ocupation']
         age = request.json['age']
         shift = request.json['shift']
         #Generar id de texto unico basado en el tiempo
         #id = uuid.uuid4()
-        doctor = Doctors(0,medical_speciality, doctor, ocupation, DateFormat.convert_str_date(age), DateFormat.convert_str_date(shift))
+        doctor = Doctors(0,medical_speciality, name, ocupation, DateFormat.convert_str_date(age), DateFormat.convert_str_date(shift))
 
         affected_rows = DoctorModel.add_doctor(doctor)
 
@@ -59,11 +59,11 @@ def add_doctor():
 def update_doctor(id):
     try:
         medical_speciality = request.json['medical_speciality']
-        doctor = request.json['doctor']
+        name = request.json['name']
         ocupation = request.json['ocupation']
         age = request.json['age']
         shift = request.json['shift']
-        doctor = Doctors(id, medical_speciality, doctor, ocupation, DateFormat.convert_str_date(age), DateFormat.convert_str_date(shift))
+        doctor = Doctors(id, medical_speciality, name, ocupation, DateFormat.convert_str_date(age), DateFormat.convert_str_date(shift))
 
 
         affected_rows = DoctorModel.update_doctor(doctor)

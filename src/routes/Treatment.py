@@ -1,4 +1,4 @@
-from flask import Blueprient, jsonify, request
+from flask import Blueprint, jsonify, request
 import uuid
 
 # Entities
@@ -14,7 +14,7 @@ main = Blueprint('treatment_blueprint', __name__)
 @main.route('/treatment/')
 def get_treatments():
     try:
-        treatments = treatmentModel.get_treatments()
+        treatments = TreatmentModel.get_treatments()
         return jsonify(treatments)
     except Exception as ex:
         return jsonify({'message': str(ex)}), 500
@@ -35,17 +35,17 @@ def get_treatment(id):
 @main.route('/add', methods=['POST'])
 def add_treatment():
     try:
-        pirula_name = request.json['pirula_name']
-        start_date = request.json['start_date']
-        end_date = request.json['end_date']
+        pirula_name = request.json['pirulaName']
+        start_date = request.json['startDate']
+        end_date = request.json['endDate']
         frecuency = request.json['frecuency']
-        first_dose = request.json['first_dose']
-        last_dose = request.json['last_dose']
+        first_dose = request.json['firstDose']
+        last_dose = request.json['lastDose']
         #Generar id de texto unico basado en el tiempo
         #id = uuid.uuid4()
-        treatment = treatment(0, name, start_date, end_date,  frecuency, first_dose, last_dose)
+        treatment = treatment(0, pirula_name, start_date, end_date,  frecuency, first_dose, last_dose)
 
-        affected_rows = treatmentModel.add_treatment(treatment)
+        affected_rows = TreatmentModel.add_treatment(treatment)
 
         if affected_rows == 1:
             return jsonify(affected_rows)
@@ -60,13 +60,13 @@ def add_treatment():
 def update_treatment(id):
     try:
         id = request.json['id']
-        name = request.json['name']
-        start_date = request.json['start_date']
-        end_date = request.json['end_date']
+        pirula_name = request.json['pirulaName']
+        start_date = request.json['startDate']
+        end_date = request.json['endDate']
         frecuency = request.json['frecuency']
-        first_dose = request.json['first_dose']
-        last_dose = request.json['last_dose']
-        treatment = treatment(id, name, start_date, end_date,  frecuency, first_dose, last_dose)
+        first_dose = request.json['firstDose']
+        last_dose = request.json['lastDose']
+        treatment = treatment(id, pirula_name, start_date, end_date,  frecuency, first_dose, last_dose)
 
 
         affected_rows = TreatmentModel.update_treatment(treatment)

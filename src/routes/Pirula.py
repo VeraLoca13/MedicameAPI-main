@@ -8,7 +8,7 @@ from models.PirulaModel import PirulaModel
 # Utils
 from utils.DateFormat import DateFormat
 
-main = Blueprint('movie_blueprint', __name__)
+main = Blueprint('pirula_blueprint', __name__)
 
 
 @main.route('/pirula/')
@@ -39,14 +39,14 @@ def add_pirula():
         brand = request.json['brand']
         dose = request.json['dose']
         type = request.json['type']
-        amountPerBox = request.json['amountPerBox']
-        withFood = request.json['withFood']
-        withoutFood = request.json['withoutFood']
-        withOtherPirula = request.json['withOtherPirula']
-        currentQuantity = request.json['currentQuantity']
+        amount_per_box = request.json['amount_per_box']
+        with_food = request.json['with_food']
+        without_food = request.json['without_food']
+        with_other_pirula = request.json['with_other_pirula']
+        current_quantity = request.json['current_quantity']
         #Generar id de texto unico basado en el tiempo
         #id = uuid.uuid4()
-        pirula = pirula(0, name, brand, dose,  type, amountPerBox, withFood, withoutFood, withOtherPirula, currentQuantity)
+        pirula = pirula(0, name, brand, dose,  type, amount_per_box, with_food, without_food, with_other_pirula, current_quantity)
 
         affected_rows = PirulaModel.add_pirula(pirula)
 
@@ -67,12 +67,12 @@ def update_pirula(id):
         brand = request.json['brand']
         dose = request.json['dose']
         type = request.json['type']
-        amountPerBox = request.json['amountPerBox']
-        withFood = request.json['withFood']
-        withoutFood = request.json['withoutFood']
-        withOtherPirula = request.json['withOtherPirula']
-        currentQuantity = request.json['currentQuantity']
-        pirula = pirula(id, name, brand, dose,  type, amountPerBox, withFood, withoutFood, withOtherPirula, currentQuantity)
+        amount_per_box = request.json['amount_per_box']
+        with_food = request.json['with_food']
+        without_food = request.json['without_food']
+        with_other_pirula = request.json['with_other_pirula']
+        current_quantity = request.json['current_quantity']
+        pirula = pirula(id, name, brand, dose,  type, amount_per_box, with_food, without_food, with_other_pirula, current_quantity)
 
 
         affected_rows = PirulaModel.update_pirula(pirula)

@@ -11,7 +11,7 @@ from utils.DateFormat import DateFormat
 main = Blueprint('movie_blueprint', __name__)
 
 
-@main.route('/visitaMedica/')
+@main.route('/')
 def get_visitas():
     try:
         visitas = VisitaMedicaModel.get_visitas()

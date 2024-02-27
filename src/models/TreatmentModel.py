@@ -34,7 +34,7 @@ class TreatmentModel():
                 treatment = None
                 if row != None:
                     treatment = Treatment(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-                    treatment = treatment.to_JSON()
+                    treatment = Treatment.to_JSON()
 
             connection.close()
             return treatment

@@ -1,5 +1,5 @@
 from database.db import get_connection
-from .entities.Doctors import Doctors
+from .entities.Doctors import Doctor
 
 
 class DoctorsModel():
@@ -15,8 +15,8 @@ class DoctorsModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    Doctors = Doctors(row[0], row[1], row[2], row[3], row[4], row[5])
-                    doctors.append(Doctors.to_JSON())
+                    doctor = Doctor(row[0], row[1], row[2], row[3], row[4], row[5])
+                    doctors.append(Doctor.to_JSON())
 
             connection.close()
             return doctors
@@ -34,8 +34,8 @@ class DoctorsModel():
 
                 Doctors = None
                 if row != None:
-                    Doctors = Doctors(row[0], row[1], row[2], row[3], row[4], row[5])
-                    Doctors = Doctors.to_JSON()
+                    doctor = Doctor(row[0], row[1], row[2], row[3], row[4], row[5])
+                    doctor = Doctor.to_JSON()
 
             connection.close()
             return Doctors
